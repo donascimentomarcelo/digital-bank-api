@@ -1,5 +1,6 @@
-package br.com.digitalBank.service;
+package br.com.digitalBank.service.annotation;
 
+import br.com.digitalBank.constants.Constants;
 import br.com.digitalBank.service.validation.CpfValidator;
 
 import javax.validation.Constraint;
@@ -13,7 +14,7 @@ import java.lang.annotation.Target;
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CpfValidation {
-    String message() default "Validation Error";
+    String message() default Constants.VALIDATION_ERROR;
     Class<?>[] groups() default {};
     Class<? extends Payload> [] payload() default {};
 }

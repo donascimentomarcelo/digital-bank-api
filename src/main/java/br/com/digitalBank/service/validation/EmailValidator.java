@@ -5,8 +5,7 @@ import br.com.digitalBank.controller.exception.FieldMessage;
 import br.com.digitalBank.domain.Client;
 import br.com.digitalBank.dto.ClientDto;
 import br.com.digitalBank.service.ClientService;
-import br.com.digitalBank.service.annotation.CpfValidation;
-import br.com.digitalBank.util.CpfUtil;
+import br.com.digitalBank.service.annotation.EmailValidation;
 import br.com.digitalBank.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,13 +14,13 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CpfValidator implements ConstraintValidator<CpfValidation, ClientDto> {
+public class EmailValidator implements ConstraintValidator<EmailValidation, ClientDto> {
 
     @Autowired
     private ClientService clientService;
 
     @Override
-    public void initialize(CpfValidation constraintAnnotation) {
+    public void initialize(EmailValidation constraintAnnotation) {
 
     }
 
@@ -30,28 +29,14 @@ public class CpfValidator implements ConstraintValidator<CpfValidation, ClientDt
 
         List<FieldMessage> list = new ArrayList<>();
 
-        checkCpfFormat(dto, list);
+        Client client = clientService.findByEmail(dto.getEmail());
 
-        checkIfCpfIsAvailable(dto, list);
+        if(client != null) {
+            list.add(new FieldMessage(Constants.EMAIL, Constants.EMAIL_UNAVALIBLE));
+        }
 
         Util.addInContext(context, list);
 
         return list.isEmpty();
     }
-
-    private void checkIfCpfIsAvailable(ClientDto dto, List<FieldMessage> list) {
-        Client client = clientService.findByCpf(dto.getCpf());
-
-        if (client != null) {
-            list.add(new FieldMessage(Constants.CPF, Constants.CPF_UNAVALIBLE));
-        }
-    }
-
-    private void checkCpfFormat(ClientDto dto, List<FieldMessage> list) {
-        if (!CpfUtil.isValidCPF(dto.getCpf())) {
-            list.add(new FieldMessage(Constants.CPF, Constants.INVALID_CPF));
-        }
-    }
-
-
 }
