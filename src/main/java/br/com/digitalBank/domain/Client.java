@@ -1,13 +1,18 @@
 package br.com.digitalBank.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Client {
 
     @Id
@@ -18,6 +23,6 @@ public class Client {
     private String lastName;
     private String email;
     private String cnh;
-    private String dateOfBirth;
-
+    private Date dateOfBirth;
+    private String cpf;
 }

@@ -1,4 +1,4 @@
-package br.com.digitalBank.utils;
+package br.com.digitalBank.util;
 
 public class CpfUtil {
 
