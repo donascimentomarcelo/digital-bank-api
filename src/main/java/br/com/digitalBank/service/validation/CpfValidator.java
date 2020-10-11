@@ -49,7 +49,7 @@ public class CpfValidator implements ConstraintValidator<CpfValidation, ClientDt
 
     private void checkCpfFormat(ClientDto dto, List<FieldMessage> list) {
         if (!CpfUtil.isValidCPF(dto.getCpf())) {
-            list.add(new FieldMessage(Constants.CPF, Constants.INVALID_CPF));
+            list.add(new FieldMessage(Constants.CPF, Constants.CPF_INVALID));
         }
     }
 

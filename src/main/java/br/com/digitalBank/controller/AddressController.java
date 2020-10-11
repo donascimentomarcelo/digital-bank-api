@@ -1,10 +1,8 @@
 package br.com.digitalBank.controller;
 
 import br.com.digitalBank.domain.Address;
-import br.com.digitalBank.domain.Client;
 import br.com.digitalBank.dto.AddressDto;
-import br.com.digitalBank.dto.ClientDto;
-import br.com.digitalBank.service.ClientService;
+import br.com.digitalBank.service.AddressService;
 import br.com.digitalBank.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,19 +15,17 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/clients")
-public class ClientController {
+@RequestMapping(value = "/address")
+public class AddressController {
 
     @Autowired
-    private ClientService clientService;
+    private AddressService addressService;
 
     @PostMapping
-    public ResponseEntity<?> createAccount(@Valid @RequestBody final ClientDto clientDto) {
-        Client client = clientService.create(clientDto.fromEntity());
+    public ResponseEntity<?> createAddress(@Valid @RequestBody final AddressDto addressDto) {
+        Address address = addressService.create(addressDto.fromEntity());
 
-        URI uri = Util.getUri(client.getId());
+        URI uri = Util.getUri(address.getId());
         return ResponseEntity.created(uri).build();
     }
-
-
 }
