@@ -2,6 +2,7 @@ package br.com.digitalBank.dto;
 
 import br.com.digitalBank.domain.Client;
 import br.com.digitalBank.service.annotation.CpfValidation;
+import br.com.digitalBank.service.annotation.DateOfBirthValidation;
 import br.com.digitalBank.service.annotation.EmailValidation;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.util.Date;
 @Setter
 @CpfValidation
 @EmailValidation
+@DateOfBirthValidation
 public class ClientDto {
 
     @NotNull(message = "Name may not be null")
@@ -28,6 +30,7 @@ public class ClientDto {
     @NotNull(message = "Cnh may not be null")
     private String cnh;
 
+    @NotNull(message = "Date of birth may not be null")
     private Date dateOfBirth;
 
     private String cpf;
