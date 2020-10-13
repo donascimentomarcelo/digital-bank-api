@@ -1,8 +1,6 @@
 package br.com.digitalBank.controller;
 
-import br.com.digitalBank.domain.Address;
 import br.com.digitalBank.domain.Client;
-import br.com.digitalBank.dto.AddressDto;
 import br.com.digitalBank.dto.ClientDto;
 import br.com.digitalBank.service.ClientService;
 import br.com.digitalBank.util.Util;
