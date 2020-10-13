@@ -12,6 +12,10 @@ public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
+    public AddressServiceImpl(AddressRepository addressRepository) {
+        this.addressRepository = addressRepository;
+    }
+
     @Override
     public Address create(Address address) {
         return addressRepository.save(address);

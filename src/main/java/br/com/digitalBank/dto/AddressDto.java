@@ -1,6 +1,7 @@
 package br.com.digitalBank.dto;
 
 import br.com.digitalBank.domain.Address;
+import br.com.digitalBank.domain.Client;
 import br.com.digitalBank.service.annotation.ZipcodeValidation;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +35,7 @@ public class AddressDto {
     private Long clientId;
 
     public Address fromEntity() {
-        return new Address(null, getZipcode(), getStreet(), getNeighborhood(), getComplement(), getCity(), getState());
+        Client client = new Client(clientId);
+        return new Address(null, getZipcode(), getStreet(), getNeighborhood(), getComplement(), getCity(), getState(), client);
     }
 }

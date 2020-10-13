@@ -36,6 +36,6 @@ public class ClientDto {
     private String cpf;
 
     public Client fromEntity() {
-        return new Client(null, name, lastName, email, cnh, dateOfBirth, cpf);
+        return new Client(null, name, lastName, email, cnh, dateOfBirth, cpf, null);
     }
 }
