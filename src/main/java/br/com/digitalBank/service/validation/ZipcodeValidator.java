@@ -18,7 +18,7 @@ public class ZipcodeValidator implements ConstraintValidator<ZipcodeValidation, 
     }
 
     @Override
-    public boolean isValid(AddressDto dto, ConstraintValidatorContext context) {
+    public boolean isValid(final AddressDto dto, final ConstraintValidatorContext context) {
 
         List<FieldMessage> list = new ArrayList<>();
 

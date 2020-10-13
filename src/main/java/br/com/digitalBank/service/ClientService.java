@@ -8,5 +8,5 @@ public interface ClientService {
 
     Client create(final Client client);
 
-    Client findByCpf(String cpf);
+    Client findByCpf(final String cpf);
 }

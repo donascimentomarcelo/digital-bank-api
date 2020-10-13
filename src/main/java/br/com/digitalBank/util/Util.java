@@ -19,7 +19,7 @@ public class Util {
                 });
     }
 
-    public static URI getUri(Long id) {
+    public static URI getUri(final Long id) {
         return ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(id)
                 .toUri();

@@ -39,7 +39,7 @@ public class CpfValidator implements ConstraintValidator<CpfValidation, ClientDt
         return list.isEmpty();
     }
 
-    private void checkIfCpfIsAvailable(ClientDto dto, List<FieldMessage> list) {
+    private void checkIfCpfIsAvailable(final ClientDto dto, final List<FieldMessage> list) {
         Client client = clientService.findByCpf(dto.getCpf());
 
         if (client != null) {
@@ -47,7 +47,7 @@ public class CpfValidator implements ConstraintValidator<CpfValidation, ClientDt
         }
     }
 
-    private void checkCpfFormat(ClientDto dto, List<FieldMessage> list) {
+    private void checkCpfFormat(final ClientDto dto, final List<FieldMessage> list) {
         if (!CpfUtil.isValidCPF(dto.getCpf())) {
             list.add(new FieldMessage(Constants.CPF, Constants.CPF_INVALID));
         }
