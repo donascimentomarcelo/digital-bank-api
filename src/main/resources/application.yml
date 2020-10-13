@@ -11,3 +11,11 @@ spring:
       generate-ddl: true
       hibernate:
         ddl-auto: create
+
+aws:
+  access_key_id:
+  secret_access_key: 
+
+s3:
+  bucket: digital-bank
+  region: sa-east-1

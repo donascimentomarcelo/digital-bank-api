@@ -6,10 +6,8 @@ import br.com.digitalBank.service.ClientService;
 import br.com.digitalBank.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -29,5 +27,9 @@ public class ClientController {
         return ResponseEntity.created(uri).build();
     }
 
-
+    @PostMapping("/picture")
+    public ResponseEntity<?> uploadPicture(@RequestParam(name="file") MultipartFile multipartFile) {
+        URI uri = clientService.uploadPicture(multipartFile);
+        return ResponseEntity.created(uri).build();
+    }
 }
