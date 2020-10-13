@@ -1,5 +1,6 @@
 package br.com.digitalBank.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,4 +25,9 @@ public class Address {
     private String complement;
     private String city;
     private String state;
+
+    @OneToOne
+    @JoinColumn(name="client_id")
+    @JsonIgnore
+    private Client client;
 }

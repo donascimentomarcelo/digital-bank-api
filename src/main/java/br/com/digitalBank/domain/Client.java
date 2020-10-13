@@ -25,4 +25,11 @@ public class Client {
     private String cnh;
     private Date dateOfBirth;
     private String cpf;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "client")
+    private Address address;
+
+    public Client(Long clientId) {
+        id = clientId;
+    }
 }
