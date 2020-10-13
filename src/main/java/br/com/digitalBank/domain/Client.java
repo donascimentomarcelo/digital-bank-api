@@ -29,7 +29,7 @@ public class Client {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "client")
     private Address address;
 
-    public Client(Long clientId) {
+    public Client(final Long clientId) {
         id = clientId;
     }
 }

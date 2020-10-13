@@ -22,7 +22,7 @@ public class DateOfBirthValidator implements ConstraintValidator<DateOfBirthVali
 
     @SneakyThrows
     @Override
-    public boolean isValid(ClientDto dto, ConstraintValidatorContext context) {
+    public boolean isValid(final ClientDto dto, final ConstraintValidatorContext context) {
 
         List<FieldMessage> list = new ArrayList<>();
 
